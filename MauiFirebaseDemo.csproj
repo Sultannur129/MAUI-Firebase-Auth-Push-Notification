@@ -23,6 +23,8 @@
 		<PublishTrimmed>false</PublishTrimmed>
 		<TrimMode>none</TrimMode>
 		<RunAOTCompilation>false</RunAOTCompilation>
+		<AndroidLinkMode>None</AndroidLinkMode>
+		<PublishTrimmed>false</PublishTrimmed>
 		<AndroidPackageFormat>apk</AndroidPackageFormat>
 		<RuntimeIdentifiers>android-arm;android-arm64;android-x64</RuntimeIdentifiers>
 
@@ -62,7 +64,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiSplashScreen Include="Resources\Splash\splash.png" Color="#FFFFFF" BaseSize="128,128"/>
+	  <MauiSplashScreen Include="Resources\Splash\splash.png" Color="#FFFFFF" BaseSize="256,256"/>
 	</ItemGroup>
 
 	<ItemGroup>
