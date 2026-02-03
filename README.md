@@ -50,10 +50,11 @@ using (var client = new HttpClient())
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
     var response = await client.PostAsync(fcmV1Url, new StringContent(jsonPayload, Encoding.UTF8, "application/json"));
 }
-2. Dinamik Bildirim Listeleme (Inbox)
+
+```
+### 2. Dinamik Bildirim Listeleme (Inbox)
 Gelen bildirimler, uygulama açıkken (Foreground) NotificationReceived eventi ile yakalanır ve arayüzdeki ObservableCollection listesine anlık yansıtılır:
-code
-C#
+```csharp
 CrossFirebaseCloudMessaging.Current.NotificationReceived += (s, e) => {
     MainThread.BeginInvokeOnMainThread(() => {
         Notifications.Insert(0, new ReceivedNotification {
@@ -63,27 +64,31 @@ CrossFirebaseCloudMessaging.Current.NotificationReceived += (s, e) => {
         });
     });
 };
-🛠️ Kurulum ve Yapılandırma (Case Maddeleri)
-1. Firebase Kurulumu
+
+```
+
+### 🛠️ Kurulum ve Yapılandırma (Case Maddeleri)
+### 1. Firebase Kurulumu
 Android: google-services.json dosyası Platforms/Android/ altına eklenmiş ve Build Action GoogleServicesJson olarak ayarlanmıştır.
 Yetkilendirme: service-account.json dosyası Resources/Raw/ altına eklenerek FCM V1 gönderimi için gerekli izinler tanımlanmıştır.
-2. Authentication Akışı
+### 2. Authentication Akışı
 Kayıt & Giriş: Kullanıcı kayıt olduğunda Firebase Auth üzerinde hesap oluşturulur ve kullanıcı profil verileri Firestore'da yedeklenir.
 Oturum Yönetimi: Preferences kullanılarak "Beni Hatırla" özelliği entegre edilmiştir. Uygulama açılışında geçerli bir oturum varsa otomatik giriş (Auto-login) yapılır.
-3. Bildirim Gönderme Mantığı (Topic / Token)
+### 3. Bildirim Gönderme Mantığı (Topic / Token)
 Dashboard üzerindeki yönetim panelinden (Tab 1) iki farklı hedefleme yapılabilir:
 Topic (Konu): "news" gibi belirli bir konuya abone olan tüm cihazlara toplu mesaj gönderimi.
 Token (Cihaz): Sadece belirli bir cihazın eşsiz FCM Token'ına özel, manuel hedefli mesaj gönderimi.
-4. Kullanılan Paketler
+### 4. Kullanılan Paketler
 Plugin.Firebase (Auth, Firestore, Messaging)
 Google.Apis.Auth (OAuth2/FCM V1 Yetkilendirme)
 CommunityToolkit.Maui (Modern UI/UX Bileşenleri)
 Xamarin.AndroidX.Lifecycle (Sürüm çakışmalarını gidermek için 2.8.3.1 sürümüyle stabilize edildi)
-⚠️ Bilinen Eksikler ve İyileştirmeler
-[!IMPORTANT]
+
+### ⚠️ Bilinen Eksikler ve İyileştirmeler
+### [!IMPORTANT]
 Güvenlik Notu: Service Account anahtarı test kolaylığı için uygulama içindedir; gerçek prodüksiyon senaryolarında bu işlem bir Backend API üzerinden yönetilmelidir.
 Splash Screen: Android 12+ üzerindeki sistem önbelleği nedeniyle, bazı cihazlarda görsel varsayılan sistem renginde kalabilmektedir.
 Geliştirme Önerisi: Bildirimlerin SQLite ile cihazda kalıcı olarak saklanması ve bildirim geçmişi silme özelliği eklenebilir.
-Geliştirici: Sultannur KAYA
-Teslim Tarihi: 03.02.2026
-Platform: .NET MAUI v8.0
+### Geliştirici: Sultannur KAYA
+### Teslim Tarihi: 03.02.2026
+### Platform: .NET MAUI v8.0
