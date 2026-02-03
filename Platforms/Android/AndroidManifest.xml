@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+	<!-- BURAYI EKLEDİK -->
+
+	<application android:allowBackup="true"
+                 android:icon="@mipmap/appicon"
+                 android:roundIcon="@mipmap/appicon_round"
+                 android:supportsRtl="true"
+			     android:label="SmartNestDemo">
+
+		<!-- CRASHLYTICS'İN OTOMATİK BAŞLAMASINI BURADAN ENGELLİYORUZ -->
+		<service android:name="com.google.firebase.components.ComponentDiscoveryService"
+                 android:exported="false"
+                 tools:node="merge">
+			<meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
+                       tools:node="remove" />
+		</service>
+
+		<meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="false" />
+
+		<meta-data
+            android:name="google_analytics_adid_collection_enabled"
+            android:value="false" />
+
+	</application>
+
+	<!-- GEREKSİNİMLER İÇİN İZİNLER -->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+	<!-- Bildirim izni -->
+
+</manifest>

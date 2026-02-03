@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiFirebaseDemo.Views.LandingPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="*, Auto">
+
+        
+        <CarouselView x:Name="OnboardingCarousel" 
+                      Grid.Row="0" 
+                      IndicatorView="indicatorView"
+                      PositionChanged="OnPositionChanged">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Spacing="20" VerticalOptions="Center" Padding="30">
+                        <Image Source="{Binding Image}" 
+                               HeightRequest="250" 
+                               HorizontalOptions="Center" 
+                               Aspect="AspectFit"/>
+
+                        <Label Text="{Binding Title}" 
+                               FontSize="22" 
+                               FontAttributes="Bold" 
+                               TextColor="#1A1A1A" 
+                               HorizontalTextAlignment="Center" 
+                               LineBreakMode="WordWrap"/>
+
+                        <Label Text="{Binding Description}" 
+                               FontSize="15" 
+                               TextColor="#757575" 
+                               HorizontalTextAlignment="Center" 
+                               LineBreakMode="WordWrap" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        
+        <Border Grid.Row="1" 
+                BackgroundColor="#1E88E5" 
+                Padding="30,40,30,60"
+                StrokeThickness="0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="40,40,0,0" />
+            </Border.StrokeShape>
+
+            <VerticalStackLayout Spacing="25" VerticalOptions="End">
+
+                
+                <IndicatorView x:Name="indicatorView" 
+                               HorizontalOptions="Center" 
+                               IndicatorColor="#90CAF9" 
+                               SelectedIndicatorColor="White" />
+
+               
+                <Button x:Name="NextBtn"
+                        Text="Lanjutkan" 
+                        BackgroundColor="#0D47A1" 
+                        TextColor="White" 
+                        CornerRadius="25" 
+                        HeightRequest="55" 
+                        FontAttributes="Bold"
+                        Clicked="OnNextClicked" />
+
+                
+                <Label x:Name="LoginLink"
+                       Text="Register atau Login di sini" 
+                       HorizontalOptions="Center" 
+                       TextColor="White"
+                       FontSize="14">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLoginTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+</ContentPage>
+
+
+
+

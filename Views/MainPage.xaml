@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiFirebaseDemo.Views.MainPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F2F4F7">
+
+    <Grid RowDefinitions="Auto, Auto, *" Padding="20">
+
+        
+        <Grid Grid.Row="0" ColumnDefinitions="*, Auto" Margin="0,0,0,20">
+            <VerticalStackLayout>
+                <Label Text="SmartNest Dashboard" FontSize="26" FontAttributes="Bold" TextColor="#1A1A1A"/>
+                <Label Text="Cloud Notification Center" FontSize="14" TextColor="#7D8592"/>
+            </VerticalStackLayout>
+            <ImageButton Grid.Column="1" Source="logout_icon.png" Clicked="OnLogoutClicked" WidthRequest="40" HeightRequest="40" BackgroundColor="#FFF1F1" CornerRadius="12" Padding="10"/>
+        </Grid>
+
+        
+        <Border Grid.Row="1" BackgroundColor="White" StrokeShape="RoundRectangle 15" Padding="5" Margin="0,0,0,20">
+            <Grid ColumnDefinitions="*, *, *">
+                <Button x:Name="TabSendBtn" Text="Send" Grid.Column="0" BackgroundColor="#3D8CFF" TextColor="White" CornerRadius="10" Clicked="OnTabClicked" CommandParameter="Send"/>
+                <Button x:Name="TabInboxBtn" Text="Inbox" Grid.Column="1" BackgroundColor="Transparent" TextColor="Gray" CornerRadius="10" Clicked="OnTabClicked" CommandParameter="Inbox"/>
+                <Button x:Name="TabDeviceBtn" Text="Device" Grid.Column="2" BackgroundColor="Transparent" TextColor="Gray" CornerRadius="10" Clicked="OnTabClicked" CommandParameter="Device"/>
+            </Grid>
+        </Border>
+
+        
+        <ScrollView Grid.Row="2" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="20">
+
+                
+                <Border x:Name="ViewSend" IsVisible="True" StrokeShape="RoundRectangle 24" BackgroundColor="White" Padding="25">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Offset="0,10" Opacity="0.04" Radius="20"/>
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="18">
+                        <Label Text="Create New Push" FontSize="18" FontAttributes="Bold"/>
+
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Notification Title" FontSize="12" FontAttributes="Bold" TextColor="#7D8592"/>
+                            <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#F8F9FB" Padding="15,0">
+                                <Entry x:Name="TitleEntry" Placeholder="Update info" HeightRequest="45" TextColor="Black"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Message Body" FontSize="12" FontAttributes="Bold" TextColor="#7D8592"/>
+                            <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#F8F9FB" Padding="15,0">
+                                <Editor x:Name="BodyEntry" Placeholder="Your message..." HeightRequest="80" TextColor="Black"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Target (Token or Topic)" FontSize="12" FontAttributes="Bold" TextColor="#7D8592"/>
+                            <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#F8F9FB" Padding="15,0">
+                                <Entry x:Name="TargetEntry" Placeholder="news or device_token" HeightRequest="45" TextColor="Black"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <Grid>
+                            <Button x:Name="PushBtn" Text="Send Notification" Clicked="OnSendNotificationClicked" BackgroundColor="#3D8CFF" TextColor="White" CornerRadius="12" HeightRequest="52" FontAttributes="Bold"/>
+                            <ActivityIndicator x:Name="PushIndicator" IsRunning="False" IsVisible="False" Color="White" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="30" WidthRequest="30"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                
+                <Border x:Name="ViewInbox" IsVisible="False" StrokeShape="RoundRectangle 24" BackgroundColor="White" Padding="20">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Offset="0,10" Opacity="0.04" Radius="20"/>
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Notification Inbox" FontAttributes="Bold" FontSize="18"/>
+                        <Label x:Name="EmptyLabel" Text="No notifications yet." FontSize="12" TextColor="Gray" HorizontalOptions="Center" Margin="0,40"/>
+
+                        <CollectionView x:Name="NotificationsListView" HeightRequest="400">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="40, *" ColumnSpacing="12" Margin="0,0,0,15">
+                                        <Border BackgroundColor="#E8F1FF" StrokeShape="RoundRectangle 20">
+                                            <Label Text="🔔" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        </Border>
+                                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                            <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="13" TextColor="Black"/>
+                                            <Label Text="{Binding Body}" FontSize="11" TextColor="Gray" MaxLines="2"/>
+                                            <Label Text="{Binding ReceivedTime}" FontSize="9" TextColor="LightGray" HorizontalOptions="End"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Border>
+
+                
+                <Border x:Name="ViewDevice" IsVisible="False" StrokeShape="RoundRectangle 24" BackgroundColor="White" Padding="25">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Offset="0,10" Opacity="0.04" Radius="20"/>
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Device Credentials" FontSize="18" FontAttributes="Bold"/>
+                        <Label Text="Your FCM Token is required to receive direct messages to this device." FontSize="12" TextColor="#7D8592"/>
+                        <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#F2F4F7" Padding="15">
+                            <Label x:Name="TokenLabel" Text="Fetching..." FontSize="11" TextColor="#4E5D78" LineBreakMode="CharacterWrap"/>
+                        </Border>
+                        <Button Text="Copy to Clipboard" Clicked="OnCopyTokenClicked" BackgroundColor="Transparent" TextColor="#3D8CFF" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+
+
+
+

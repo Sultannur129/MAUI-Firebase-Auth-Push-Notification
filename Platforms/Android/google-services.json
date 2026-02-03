@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "87673319680",
+    "project_id": "mauifirebasedemo-3003c",
+    "storage_bucket": "mauifirebasedemo-3003c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87673319680:android:ef14e16ac4cb3e2a8103e5",
+        "android_client_info": {
+          "package_name": "com.companyname.mauifirebasedemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ9DjEPucy3z9zizpE_UAxxKwEIvsK8Ng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

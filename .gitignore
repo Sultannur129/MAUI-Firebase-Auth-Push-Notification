@@ -1,0 +1,13 @@
+# Visual Studio geçici dosyaları
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# MAUI / Android geçici dosyaları
+*.apk
+*.aab
+*.keystore

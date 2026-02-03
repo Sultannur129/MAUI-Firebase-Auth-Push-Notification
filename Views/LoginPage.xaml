@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiFirebaseDemo.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F5F7FA">
+
+    <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never">
+        
+        <Grid RowDefinitions="*, Auto" Padding="20,30,20,10" VerticalOptions="Fill">
+
+            <VerticalStackLayout Grid.Row="0" Spacing="0" VerticalOptions="Center">
+                
+                <Label Text="SmartNest"
+                       FontSize="34"
+                       FontAttributes="Bold"
+                       TextColor="#1E88E5"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,20"/>
+
+                <Border BackgroundColor="White"
+                        StrokeShape="RoundRectangle 35"
+                        Padding="25,25,25,25"
+                        MaximumWidthRequest="450"
+                        HorizontalOptions="Fill">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Offset="0,5" Opacity="0.1" Radius="15"/>
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Welcome to SmartNest login now!"
+                               FontSize="15"
+                               TextColor="#666"
+                               HorizontalOptions="Center"
+                               Margin="0,0,0,5"/>
+
+                        
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Email" FontAttributes="Bold" TextColor="#444" FontSize="13" Margin="5,0"/>
+                            <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#F2F2F7" Padding="15,0">
+                                <Entry x:Name="EmailEntry" Placeholder="joedoe75@gmail.com" HeightRequest="48" TextColor="Black" Keyboard="Email" ReturnType="Next"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Password" FontAttributes="Bold" TextColor="#444" FontSize="13" Margin="5,0"/>
+                            <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#F2F2F7" Padding="15,0">
+                                <Entry x:Name="PasswordEntry" Placeholder="********" IsPassword="True" HeightRequest="48" TextColor="Black" ReturnType="Done"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        
+                        <Grid ColumnDefinitions="*, Auto">
+                            <HorizontalStackLayout Grid.Column="0" Spacing="0" VerticalOptions="Center">
+                                <CheckBox x:Name="RememberMeCheckbox" Color="#1E88E5" Scale="0.7"/>
+                                <Label Text="Remember me" VerticalOptions="Center" FontSize="11" TextColor="Gray">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnRememberMeLabelTapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </HorizontalStackLayout>
+
+                            <Label Grid.Column="1" Text="Forget password?" TextColor="#1E88E5" FontSize="11" VerticalOptions="Center" FontAttributes="Bold">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnForgotPasswordTapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+
+                        
+                        <Grid Margin="0,5,0,0">
+                            <Button x:Name="LoginBtn"
+                                    Text="Login"
+                                    HeightRequest="52"
+                                    CornerRadius="26"
+                                    BackgroundColor="#1E88E5"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Clicked="OnLoginClicked"/>
+
+                            
+                            <ActivityIndicator x:Name="LoginIndicator" 
+                                               IsRunning="False" 
+                                               IsVisible="False" 
+                                               Color="White" 
+                                               HorizontalOptions="Center" 
+                                               VerticalOptions="Center" 
+                                               HeightRequest="30" 
+                                               WidthRequest="30"/>
+                        </Grid>
+
+                        
+                        <VerticalStackLayout Spacing="10" Margin="0,5,0,0">
+                            <Label Text="Or Sign in with" HorizontalOptions="Center" TextColor="#999" FontSize="12"/>
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                                <ImageButton Source="facebook.png" WidthRequest="40" HeightRequest="40" Aspect="AspectFit" Clicked="OnFacebookLoginClicked"/>
+                                <ImageButton Source="google.png" WidthRequest="40" HeightRequest="40" Aspect="AspectFit" Clicked="OnGoogleLoginClicked"/>
+                                <ImageButton Source="apple.png" WidthRequest="40" HeightRequest="40" Aspect="AspectFit" Clicked="OnAppleLoginClicked"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+
+            
+            <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="End" Margin="0,15,0,5">
+                <Label Text="Don't have an account? " TextColor="#444" FontSize="14"/>
+                <Label Text="Register" TextColor="#1E88E5" FontAttributes="Bold" FontSize="14">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRegisterTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
+
+
+
+
+
