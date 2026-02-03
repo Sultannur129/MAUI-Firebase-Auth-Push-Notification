@@ -85,10 +85,10 @@ CommunityToolkit.Maui (Modern UI/UX Bileşenleri)
 Xamarin.AndroidX.Lifecycle (Sürüm çakışmalarını gidermek için 2.8.3.1 sürümüyle stabilize edildi)
 
 ### ⚠️ Bilinen Eksikler ve İyileştirmeler
-[!IMPORTANT]
-Güvenlik Notu: Service Account anahtarı test kolaylığı için uygulama içindedir; gerçek prodüksiyon senaryolarında bu işlem bir Backend API üzerinden yönetilmelidir.
+## Güvenlik Notu: 
+Service Account anahtarı test kolaylığı için uygulama içindedir; gerçek prodüksiyon senaryolarında bu işlem bir Backend API üzerinden yönetilmelidir.
 Splash Screen: Android 12+ üzerindeki sistem önbelleği nedeniyle, bazı cihazlarda görsel varsayılan sistem renginde kalabilmektedir.
 Geliştirme Önerisi: Bildirimlerin SQLite ile cihazda kalıcı olarak saklanması ve bildirim geçmişi silme özelliği eklenebilir.
-### Geliştirici: Sultannur KAYA
-### Teslim Tarihi: 03.02.2026
-### Platform: .NET MAUI v8.0
+## Geliştirici: Sultannur KAYA
+## Teslim Tarihi: 03.02.2026
+## Platform: .NET MAUI v8.0
